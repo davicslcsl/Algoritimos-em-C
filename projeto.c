@@ -2,7 +2,7 @@
 
 
 int main() {
-    int vetor[10];
+    int quartos[10];
     int  e, i, temp,quantidade;
     char resp = 's';
     quantidade = 0;
@@ -21,7 +21,7 @@ int main() {
     {
         if (quantidade <10 ){
         printf("digite o numero a ser preenchido na posicao %i : ", quantidade);
-        scanf(" %d",&vetor[quantidade]);
+        scanf(" %d",&quartos[quantidade]);
         quantidade+=1;
         
         printf("\ndeseja preencher outra? (s/n): ");
@@ -52,7 +52,7 @@ int main() {
         printf("digite o elemento que voce deseja encontrar:  ");
         scanf(" %i",&e);
         for (i=0; i < quantidade+1; i++ ){
-            if (vetor[i] == e){
+            if (quartos[i] == e){
                 printf("o valor %i foi encontrado na posicao %i ",  e, i+1);
                 temp+=1;
                 
@@ -85,9 +85,9 @@ int main() {
         scanf(" %i",&e);
         for (i=0; i< quantidade+1; i++ ){
             if (i == e){
-                printf("o valor %i foi encontrado na posicao %i ",  vetor[e], i);
+                printf("o valor %i foi encontrado na posicao %i ",  quartos[e], i);
                 printf("deseja troca-lo por qual valor: ");
-                scanf(" %d",&vetor[i]);
+                scanf(" %d",&quartos[i]);
                 temp+=1;
             }
         }
@@ -120,8 +120,8 @@ int main() {
         scanf(" %c", &resp2);
         if (resp2 == 's' || resp2 =='S'){
             for (i=10; i> 0; i--){
-                if(vetor[i] != 0){
-                    vetor[i] =0;
+                if(quartos[i] != 0){
+                    quartos[i] =0;
                     i = -1;
                     temp=1;
                     printf("elemnto apagado \n");
@@ -138,7 +138,7 @@ int main() {
         }
         
         if (temp ==0){
-            printf("vetor vazio");
+            printf("quartos vazio");
         }
         printf("deseja apagar novamente? (s/n): ");
         scanf(" %c", &resp);
