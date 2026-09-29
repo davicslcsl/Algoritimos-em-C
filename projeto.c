@@ -19,36 +19,57 @@ int main() {
     printf("Digite o numero para realizar a acao: ");
     scanf(" %i", &fun);
     //Criar
-    if (fun == 1) {
-    while (resp == 's' || resp =='S')
-    {
-        if (quantidade <10 ){
-        printf("digite o numero a ser preenchido na posicao %i : ", quantidade);
-        scanf(" %d",&quartos[quantidade]);
-        quantidade+=1;
-     while(1)
-     {
-         printf("\ndeseja preencher outra? (s/n): ");
-        scanf(" %c", &resp);
-         if (resp == 's' || resp =='S'){
-            printf("\n");
-            break;
-         }
-         if (resp == 'n' || resp =='N'){
-            printf("\n");
-            break;
-         }
-         else {
-            printf("digitacao invalida, escreva novamente\n\n");
-         }
-     }
+   if (fun == 1) {
+            resp = 's';
+
+            while (resp == 's' || resp == 'S') {
+
+                printf("\nDigite o numero do quarto (1 a 10): ");
+
+                if (scanf("%d", &numero) == 1) {
+                    if (numero >= 1 && numero <= 10) {
+                        if (quartos[numero - 1] == 0) {
+                            printf("Digite a quantidade de diarias: ");
+                            if (scanf("%d", &diaria) == 1) {
+                                if (diaria > 0) {
+                                    quartos[numero - 1] = diaria;
+                                    printf("Hospedagem realizada com sucesso\n");
+                                }
+                                else {
+                                    printf("A quantidade de diarias deve ser maior que 0.\n");
+                                }
+                            }
+                            else {
+                                printf("Quantidade de diarias invalida.\n");
+                            }
+                        }
+                        else {
+                            printf("Esse quarto ja esta ocupado.\n");
+                        }
+                    }
+                    else {
+                        printf("Quarto inexistente.\n");
+                    }
+                }
+                else {
+                    printf("Digite um numero inteiro.\n");
+                }
+
+                printf("Deseja realizar outra hospedagem? (s/n): ");
+                scanf(" %c", &resp);
+
+                if (resp == 's' || resp == 'S') {
+                    printf("\n");
+                }
+                else if (resp == 'n' || resp == 'N') {
+                    printf("\n");
+                }
+                else {
+                    printf("Digitacao invalida.\n");
+                    resp = 'n';
+                }
+            }
         }
-         if (quantidade >= 10 ){
-            printf("A quantidade limite de elementos foi atingida\n\n");
-            resp = 'n';
-        }
-    }
-    }
 
     //Encontrar
     if (fun == 2) {
