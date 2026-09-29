@@ -8,12 +8,13 @@ int main() {
     quantidade = 0;
  while(1){
     int fun;
-    printf("\n1 - Criar");
-    printf("\n2 - Encotrar");
-    printf("\n3 - Trocar");
-    printf("\n4 - Apagar");
+    printf("======== Hotel ========");
+    printf("\n1 - Realizar hospedagem");
+    printf("\n2 - Consultar quartos");
+    printf("\n3 - Alterar hospedagem");
+    printf("\n4 - encerrar hospedagem");
     printf("\n5 - Sair");
-    printf("\ndigite o numero para realizar a ação: ");
+    printf("\ndigite o numero para realizar a acao: ");
     scanf(" %i", &fun);
     //Criar
     if (fun == 1) {
