@@ -84,7 +84,7 @@ int main()
           } 
      }
   }
-    printf("Agora é sério, até nunca mais ...");
+    printf("Até nunca mais ...");
     
     return 0;
 }
