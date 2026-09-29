@@ -1,18 +1,18 @@
 #include <stdio.h>
-
+#include <stdbool.h>
 
 int main() {
-    int quartos[10];
-    int  e, i, temp,quantidade;
-    char resp = 's';
+    int vetor[10];
+    int  fun,e, i, temp,quantidade;
+    
     quantidade = 0;
- while(1){
-    int fun;
-    printf("======== Hotel ========");
-    printf("\n1 - Realizar hospedagem");
-    printf("\n2 - Consultar quartos");
-    printf("\n3 - Alterar hospedagem");
-    printf("\n4 - encerrar hospedagem");
+    fun = 0;
+ while(fun != 5){ 
+    char resp = 's';
+    printf("\n1 - Criar");
+    printf("\n2 - Encotrar");
+    printf("\n3 - Trocar");
+    printf("\n4 - Apagar");
     printf("\n5 - Sair");
     printf("\ndigite o numero para realizar a acao: ");
     scanf(" %i", &fun);
@@ -22,47 +22,51 @@ int main() {
     {
         if (quantidade <10 ){
         printf("digite o numero a ser preenchido na posicao %i : ", quantidade);
-        scanf(" %d",&quartos[quantidade]);
+        scanf(" %d",&vetor[quantidade]);
         quantidade+=1;
-        
-        printf("\ndeseja preencher outra? (s/n): ");
+     while(1)
+     {
+         printf("\ndeseja preencher outra? (s/n): ");
         scanf(" %c", &resp);
          if (resp == 's' || resp =='S'){
             printf("\n");
+            break;
          }
-         else if (resp == 'n' || resp =='N'){
+         if (resp == 'n' || resp =='N'){
             printf("\n");
+            break;
          }
          else {
-            resp = 's';
             printf("digitacao invalida, escreva novamente\n\n");
          }
+     }
         }
-        else{
+         if (quantidade >= 10 ){
             printf("A quantidade limite de elementos foi atingida\n\n");
             resp = 'n';
         }
     }
+    }
 
     //Encontrar
     if (fun == 2) {
-    resp = 's';
      while (resp == 's' || resp =='S')
     {
         temp =0;
-        printf("digite o elemento que voce deseja encontrar:  ");
+        printf("digite o elemento que voce deseja encontrar: ");
         scanf(" %i",&e);
+        printf("\n");
         for (i=0; i < quantidade+1; i++ ){
-            if (quartos[i] == e){
-                printf("o valor %i foi encontrado na posicao %i ",  e, i+1);
+            if (vetor[i] == e){
+                printf("o valor %i foi encontrado na posicao %i \n",  e, i);
                 temp+=1;
                 
             }
         }
         if (temp ==0){
-            printf("elemento nao encontrado");
+            printf("elemento nao encontrado\n");
         }
-        printf("deseja encontrar outro? (s/n): ");
+        printf("\ndeseja encontrar outro? (s/n): ");
         scanf(" %c", &resp);
         if (resp == 's' || resp =='S'){
             printf("\n");
@@ -78,7 +82,6 @@ int main() {
     }
     //Trocar
     if (fun == 3) {
-    resp = 's';
      while (resp == 's' || resp =='S')
     {
         temp =0;
@@ -86,9 +89,9 @@ int main() {
         scanf(" %i",&e);
         for (i=0; i< quantidade+1; i++ ){
             if (i == e){
-                printf("o valor %i foi encontrado na posicao %i ",  quartos[e], i);
+                printf("o valor %i foi encontrado na posicao %i ",  vetor[e], i);
                 printf("deseja troca-lo por qual valor: ");
-                scanf(" %d",&quartos[i]);
+                scanf(" %d",&vetor[i]);
                 temp+=1;
             }
         }
@@ -120,14 +123,9 @@ int main() {
         printf("voce deseja apagar o ultimo elemento? (s/n): ");
         scanf(" %c", &resp2);
         if (resp2 == 's' || resp2 =='S'){
-            for (i=10; i> 0; i--){
-                if(quartos[i] != 0){
-                    quartos[i] =0;
-                    i = -1;
-                    temp=1;
-                    printf("elemnto apagado \n");
-                }
-            }
+            vetor[quantidade] = 0;
+            quantidade -=1;
+            printf("o ultimo elemento foi apagado");
         }
         else if (resp2 == 'n' || resp2 =='N'){
             printf("\n");
@@ -139,7 +137,7 @@ int main() {
         }
         
         if (temp ==0){
-            printf("quartos vazio");
+            printf("vetor vazio");
         }
         printf("deseja apagar novamente? (s/n): ");
         scanf(" %c", &resp);
@@ -155,9 +153,11 @@ int main() {
         }
     }
     }
-    // sair
-    if (fun == 5) {}
- }
-   return 0;
+ 
 }
+    // sair
+    if (fun == 5) {
+        printf("\nate mais...");
+    }
+return 0;
 }    
