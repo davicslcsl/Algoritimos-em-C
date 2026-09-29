@@ -3,7 +3,7 @@
 
 int main() {
     int quartos[10];
-    int  fun,e, i, temp,quantidade;
+    int  fun,numero,e, i,diaria, temp,quantidade;
     
     quantidade = 0;
     fun = 0;
