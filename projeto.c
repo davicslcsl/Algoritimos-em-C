@@ -2,19 +2,21 @@
 #include <stdbool.h>
 
 int main() {
-    int vetor[10];
+    int quartos[10];
     int  fun,e, i, temp,quantidade;
     
     quantidade = 0;
     fun = 0;
  while(fun != 5){ 
     char resp = 's';
-    printf("\n1 - Criar");
-    printf("\n2 - Encotrar");
-    printf("\n3 - Trocar");
-    printf("\n4 - Apagar");
-    printf("\n5 - Sair");
-    printf("\ndigite o numero para realizar a acao: ");
+
+    printf("\n======== Hotel ========\n");
+    printf("1 - Realizar hospedagem\n");
+    printf("2 - Consultar quartos\n");
+    printf("3 - Alterar hospedagem\n");
+    printf("4 - Encerrar hospedagem\n");
+    printf("5 - Sair\n");
+    printf("Digite o numero para realizar a acao: ");
     scanf(" %i", &fun);
     //Criar
     if (fun == 1) {
@@ -22,7 +24,7 @@ int main() {
     {
         if (quantidade <10 ){
         printf("digite o numero a ser preenchido na posicao %i : ", quantidade);
-        scanf(" %d",&vetor[quantidade]);
+        scanf(" %d",&quartos[quantidade]);
         quantidade+=1;
      while(1)
      {
@@ -57,7 +59,7 @@ int main() {
         scanf(" %i",&e);
         printf("\n");
         for (i=0; i < quantidade+1; i++ ){
-            if (vetor[i] == e){
+            if (quartos[i] == e){
                 printf("o valor %i foi encontrado na posicao %i \n",  e, i);
                 temp+=1;
                 
@@ -89,9 +91,9 @@ int main() {
         scanf(" %i",&e);
         for (i=0; i< quantidade+1; i++ ){
             if (i == e){
-                printf("o valor %i foi encontrado na posicao %i ",  vetor[e], i);
+                printf("o valor %i foi encontrado na posicao %i ",  quartos[e], i);
                 printf("deseja troca-lo por qual valor: ");
-                scanf(" %d",&vetor[i]);
+                scanf(" %d",&quartos[i]);
                 temp+=1;
             }
         }
@@ -123,7 +125,7 @@ int main() {
         printf("voce deseja apagar o ultimo elemento? (s/n): ");
         scanf(" %c", &resp2);
         if (resp2 == 's' || resp2 =='S'){
-            vetor[quantidade] = 0;
+            quartos[quantidade] = 0;
             quantidade -=1;
             printf("o ultimo elemento foi apagado");
         }
@@ -137,7 +139,7 @@ int main() {
         }
         
         if (temp ==0){
-            printf("vetor vazio");
+            printf("quartos vazio");
         }
         printf("deseja apagar novamente? (s/n): ");
         scanf(" %c", &resp);
