@@ -3,13 +3,13 @@
 
 int main() {
 	int quartos[10];
-	int  fun,numero,encontra, i,diaria, temp,quantidade;
+	int  opcao , numero, encontra, i ,diaria , temp,quantidade;
 	quantidade = 0;
-	fun = 0;
+	opcao = 0;
 	for (i = 0; i < 10; i++) {
 		quartos[i] = 0;
 	}
-	while(fun != 5) {
+	while(opcao != 5) {
 		char resp = 's';
 
 		printf("\n======== Hotel ========\n");
@@ -18,10 +18,10 @@ int main() {
 		printf("3 - Alterar hospedagem\n");
 		printf("4 - Encerrar hospedagem\n");
 		printf("5 - Sair\n");
-		printf("Digite o numero para realizar a acao: ");
-		scanf(" %i", &fun);
+		printf("Digite o numero para realizar a ação: ");
+		scanf(" %i", &opcao);
 		//Criar
-		if (fun == 1) {
+		if (opcao == 1) {
 			resp = 's';
 
 			while (resp == 's' || resp == 'S') {
@@ -73,49 +73,58 @@ int main() {
 			}
 		}
 
-		//Encontrar
-		if (fun == 2) {
-			resp = 'N';
-			for (i = 0; i < 10; i++) {
-				if (quartos[i] != 0) {
-					resp = 's';
-					i = 10;
-				}
-			}
-			if (resp == 'N') {
-				printf("\nTodos os quartos estão desocupados");
-			}
-			while (resp == 's' || resp =='S') {
-				temp =0;
-				printf("digite o elemento que voce deseja encontrar: ");
-				scanf(" %i",&encontra);
-				printf("\n");
-				for (i=0; i < quantidade+1; i++ ) {
-					if (quartos[i] == encontra) {
-						printf("o valor %i foi encontrado na posicao %i \n",  encontra, i);
-						temp+=1;
+		//Consultar
+		if (opcao == 2) {
+			int op;
+			int encontrou = 0;
 
+			printf("\n--- Consultar quartos ---\n");
+			printf("1 - Exibir todos os quartos\n");
+			printf("2 - Exibir somente quartos vazios\n");
+			printf("3 - Exibir somente quartos ocupados\n");
+			printf("Escolha: ");
+			scanf(" %d", &op);
+			printf("\n");
+
+			if (op == 1) {
+				for (i = 0; i < 10; i++) {
+					if (quartos[i] > 0) {
+						printf("Quarto %2d: OCUPADO (%d diaria(s))\n", i + 1, quartos[i]);
+					}
+					else {
+						printf("Quarto %2d: vazio\n", i + 1);
 					}
 				}
-				if (temp ==0) {
-					printf("elemento nao encontrado\n");
+			}
+			else if (op == 2) {
+				for (i = 0; i < 10; i++) {
+					if (quartos[i] == 0) {
+						printf("Quarto %2d: vazio\n", i + 1);
+						encontrou = 1;
+					}
 				}
-				printf("\ndeseja encontrar outro? (s/n): ");
-				scanf(" %c", &resp);
-				if (resp == 's' || resp =='S') {
-					printf("\n");
-				}
-				else if (resp == 'n' || resp =='N') {
-					printf("\n");
-				}
-				else {
-					resp = 's';
-					printf("digitacao invalida, escreva novamente\n\n");
+				if (!encontrou) {
+					printf("Nao ha quartos vazios.\n");
 				}
 			}
+			else if (op == 3) {
+				for (i = 0; i < 10; i++) {
+					if (quartos[i] > 0) {
+						printf("Quarto %2d: OCUPADO (%d diaria(s))\n", i + 1, quartos[i]);
+						encontrou = 1;
+					}
+				}
+				if (!encontrou) {
+					printf("Nao ha quartos ocupados.\n");
+				}
+			}
+			else {
+				printf("Opcao invalida.\n");
+			}
 		}
+
 		//Trocar
-		if (fun == 3) {
+		if (opcao == 3) {
 			resp = 'N';
 			for (i = 0; i < 10; i++) {
 				if (quartos[i] != 0) {
@@ -124,7 +133,7 @@ int main() {
 				}
 			}
 			if (resp == 'N') {
-				printf("\nTodos os quartos estão desocupados");
+				printf("\nTodos os quartos estÃ£o desocupados");
 			}
 			while (resp == 's' || resp =='S')
 			{
@@ -134,13 +143,13 @@ int main() {
 				for (i=0; i< 10; i++ ) {
 					if (i == encontra-1) {
 						if (quartos[i] > 0) {
-							printf("o quarto %i está reservado com %i diarias \n",  encontra, quartos[i]);
+							printf("o quarto %i estÃ¡ reservado com %i diarias \n",  encontra, quartos[i]);
 							printf("gostaria de trocar para quantas?: ");
 							if (scanf(" %d", &diaria) == 1) {
 								if (diaria > 0) {
 									quartos[i] = diaria;
 									printf("troca realizada com sucesso\n");
-									printf("Agora o quarto %i está reservado com %i diarias \n", encontra, quartos[i]);
+									printf("Agora o quarto %i estÃ¡ reservado com %i diarias \n", encontra, quartos[i]);
 								}
 								else {
 									printf("A quantidade de diarias deve ser maior que 0.\n");
@@ -152,7 +161,7 @@ int main() {
 							temp+=1;
 						}
 						else {
-							printf("O quarto está desocupado.\n");
+							printf("O quarto estÃ¡ desocupado.\n");
 							temp+=1;
 						}
 					}
@@ -175,7 +184,7 @@ int main() {
 			}
 		}
 		//Apagar
-		if (fun == 4) {
+		if (opcao == 4) {
 			char resp2 ='s';
 			resp = 'N';
 			for (i = 0; i < 10; i++) {
@@ -185,7 +194,7 @@ int main() {
 				}
 			}
 			if (resp == 'N') {
-				printf("\nTodos os quartos estão desocupados");
+				printf("\nTodos os quartos estÃ£o desocupados");
 			}
 			while (resp == 's' || resp =='S')
 			{
@@ -195,7 +204,7 @@ int main() {
 				for (i=0; i< 10; i++ ) {
 					if (i == encontra-1) {
 						if (quartos[i] > 0) {
-							printf("O quarto %i está reservado com %i diarias \n",  encontra, quartos[i]);
+							printf("O quarto %i estÃ¡ reservado com %i diarias \n",  encontra, quartos[i]);
 							printf("Gostaria de encerrar esta hospedagem?: ");
 							scanf(" %c", &resp2);
 							if (resp2 == 'S' || resp2 == 's') {
@@ -214,7 +223,7 @@ int main() {
 
 						}
 						else {
-							printf("O quarto está desocupado.\n");
+							printf("O quarto estÃ¡ desocupado.\n");
 							temp+=1;
 						}
 					}
@@ -240,7 +249,7 @@ int main() {
 
 	}
 	// sair
-	if (fun == 5) {
+	if (opcao == 5) {
 		printf("\nAte mais...");
 	}
 	return 0;
