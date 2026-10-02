@@ -17,7 +17,7 @@ int main() {
 		printf("3 - Alterar hospedagem\n");
 		printf("4 - Encerrar hospedagem\n");
 		printf("5 - Sair\n");
-		printf("Digite o numero para realizar a acao: ");
+		printf("Digite o numero para realizar a ação: ");
 		if (scanf("%d", &opcao) != 1) {
 			lixo = 'a';
 			while (lixo != '\n') {
