@@ -23,8 +23,11 @@ int main() {
 			while (lixo != '\n') {
 				scanf("%c", &lixo);
 			}
-			printf("\nDigite um número de 1 a 5.\n");
 			opcao = 0;
+		}
+		
+		if (opcao <= 0 || opcao > 5){
+		    printf("\nDigite uma opção válida!");
 		}
 
 		//Criar
