@@ -10,7 +10,7 @@ int main() {
 	while (opcao != 5) {
 		char resp = 's';
 		char lixo;
-
+		//Menu
 		printf("\n======== Hotel ========\n");
 		printf("1 - Realizar hospedagem\n");
 		printf("2 - Consultar quartos\n");
