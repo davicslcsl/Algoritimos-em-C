@@ -157,7 +157,7 @@ int main() {
                     if (quartos[i] == 0) {
 
                         printf("Quarto %d: vazio\n", i + 1);
-                        / Marca que pelo menos um quarto vazio foi encontrado.
+                        // Marca que pelo menos um quarto vazio foi encontrado.
                         encontrou = 1;
                     }
                 }
@@ -165,7 +165,7 @@ int main() {
                     printf("Não há quartos vazios.\n");
                 }
             }
-            / Mostrar quartos ocupados
+            // Mostrar quartos ocupados
             else if (op == 3) {
                 for (i = 0; i < 10; i++) {
                     if (quartos[i] > 0) {
