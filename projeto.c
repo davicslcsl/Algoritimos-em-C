@@ -1,13 +1,12 @@
 #include <stdio.h>
 
 int main() {
-	int quartos[10];
-	int opcao, numero, encontra, i, diaria, temp;
+	int despesas[10];
+	int opcao, encontra, i, diaria;
+    float numero, temp;
+    int quantidade;
+    quantidade = 0;
 	opcao = 0;
-	//Preenche todos os quartos com 0 para indicar par o progragama que eles estão vazios
-	for (i = 0; i < 10; i++) {
-		quartos[i] = 0;
-	}
 	//Garante que o programa continue a ser executado até que o usuário digite 5
 	while (opcao != 5) {
 		//Variável usada para respostas de sim ou não
@@ -17,10 +16,10 @@ int main() {
 		char lixo;
 		//Menu
 		printf("\n======== Hotel ========\n");
-		printf("1 - Realizar hospedagem\n");
-		printf("2 - Consultar quartos\n");
-		printf("3 - Alterar hospedagem\n");
-		printf("4 - Encerrar hospedagem\n");
+		printf("1 - Registrar despesas\n");
+		printf("2 - Consultar despesas\n");
+		printf("3 - Alterar despesas\n");
+		printf("4 - Deletar despesas\n");
 		printf("5 - Sair\n");
 		printf("Digite o número para realizar a ação: ");
 		//scanf retorna 1 quando consegue ler corretamente um inteiro.
@@ -40,77 +39,65 @@ int main() {
 		    printf("\nDigite uma opção válida!");
 		}
 
-		//Realizar hospedagem (criar)
-		if (opcao == 1) {
-			resp = 's';
-			//Permite que a ação seja realizada até que o usuário digite n ou N 
-			while (resp == 's' || resp == 'S') {
+		// Registrar despesas (Create)
+if (opcao == 1) {
+    resp = 's';
 
-				printf("\nDigite o número do quarto (1 a 10): ");
-				//Verifica se foi digitado um número inteiro.
-				if (scanf("%d", &numero) == 1) {
-					 // Verifica se o quarto existe.
-					if (numero >= 1 && numero <= 10) {
-						//Se o valor for 0, o quarto está livre.
-						if (quartos[numero - 1] == 0) {
-							printf("Digite a quantidade de diárias: ");
-							//Verifica se a quantidade de diárias informada é um número inteiro.
-							if (scanf("%d", &diaria) == 1) {
-								 //Não é permitido cadastrar zero ou uma quantidade negativa de diárias.
-								if (diaria > 0) {
-									// Armazena no quarto a quantidade de diárias da hospedagem.
-									quartos[numero - 1] = diaria;
-									printf("Hospedagem realizada com sucesso\n");
-								}
-								else {
-									printf("A quantidade de diárias deve ser maior que 0.\n");
-								}
-							}
-							//O usuário digitou algo que não era inteiro.
-							else {
-								//Limpa a entrada inválida.
-								lixo = 'a';
-								while (lixo != '\n') {
-									scanf("%c", &lixo);
-								}
-								printf("Quantidade de diárias inválida.\n");
-							}
-						}
-						//Se o valor do quarto não é 0, significa que ele já está ocupado.
-						else {
-							printf("Esse quarto já está ocupado.\n");
-						}
-					}
-					//Número menor que 1 ou maior que 10.
-					else {
-						printf("Quarto inexistente.\n");
-					}
-				}
-				//Entrada do número do quarto não era um inteiro.
-				else {
-					lixo = 'a';
-					while (lixo != '\n') {
-						scanf("%c", &lixo);
-					}
-					printf("Digite um número inteiro.\n");
-				}
+    while (resp == 's' || resp == 'S') {
 
-				printf("Deseja realizar outra hospedagem? (s/n): ");
-				scanf(" %c", &resp);
+        // Verifica se o vetor está cheio
+        if (quantidade >= 10) {
+            printf("\nLimite de 10 despesas atingido!\n");
+            break;
+        }
 
-				if (resp == 's' || resp == 'S') {
-					printf("\n");
-				}
-				else if (resp == 'n' || resp == 'N') {
-					printf("\n");
-				}
-				else {
-					// Se a resposta não for S nem N encerra a ação de cadastramento.
-					printf("Digitação inválida.\n");
-					resp = 'n';
-				}
-			}
-		}
+        printf("\nDigite o valor da despesa %i: ", quantidade + 1);
+
+        // Verifica se foi digitado um número válido
+        if (scanf("%f", &numero) == 1) {
+
+            // Não permite valores negativos
+            if (numero >= 0) {
+                despesas[quantidade] = numero;
+                quantidade += 1;
+                printf("Despesa registrada com sucesso!\n");
+            }
+            else {
+                printf("A despesa não pode ser negativa!\n");
+                continue;
+            }
+        }
+        else {
+            lixo = 'a';
+            while (lixo != '\n') {
+                scanf("%c", &lixo);
+            }
+
+            printf("Digite um número válido!\n");
+            continue;
+        }
+
+        // Verifica se ainda existe espaço no vetor
+        if (quantidade >= 10) {
+            printf("\nLimite de 10 despesas atingido!\n");
+            break;
+        }
+
+        printf("Deseja registrar outra despesa (s/n): ");
+        scanf(" %c", &resp);
+
+        if (resp == 's' || resp == 'S') {
+            printf("\n");
+        }
+        else if (resp == 'n' || resp == 'N') {
+            printf("\n");
+        }
+        else {
+            printf("Digitação inválida.\n");
+            resp = 'n';
+        }
+    	}
+    }
 
 		//Consultar quartos (ler)
 		if (opcao == 2) {
