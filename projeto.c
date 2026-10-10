@@ -365,9 +365,10 @@ if (opcao == 1) {
                 printf("Opção inválida.\n");
             }
         }
-       //Encerrar despesa(deletar)
+       //deletar despesa(delete)
 		if (opcao == 4) {
 			resp = 'S';
+			//observa se a despesas registradas e se nao tiver cancela a operção delete
 			if (quantidade = 0) {
 				printf("Nao ha despesas registradas.\n");
 				resp = 'N';
@@ -390,6 +391,7 @@ if (opcao == 1) {
 				if (sub == 1) {
 					//resp2 será usada para confirmar especificamente o encerramento do quarto escolhido.
 					char resp2 = 'S';
+					//lista das depesas registradas
 					for (i = 0; i < quantidade; i++) {
 						printf("despesa %dª: (%.2f $)\n", i + 1, despesas[i]);
 					}
