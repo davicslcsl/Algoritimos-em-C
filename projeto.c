@@ -368,7 +368,7 @@ if (opcao == 1) {
        //deletar despesa(delete)
 		if (opcao == 4) {
 			resp = 'S';
-			//observa se a despesas registradas e se nao tiver cancela a operção delete
+			//observa se a despesas registradas, e se nao tiver cancela a operação delete
 			if (quantidade = 0) {
 				printf("Nao ha despesas registradas.\n");
 				resp = 'N';
@@ -387,6 +387,7 @@ if (opcao == 1) {
 					sub = 0;
 				}
 				printf("\n");
+				
 				//Encerrar uma despesa
 				if (sub == 1) {
 					//resp2 será usada para confirmar especificamente o encerramento do quarto escolhido.
@@ -403,29 +404,37 @@ if (opcao == 1) {
 						}
 						encontra = 0;
 					}
+					//verifica se a var "encotra" existe no numero de posiçoes atuais
 					if (encontra > 0 && encontra =< quantidade) {
-						printf("\ndespesa %dª: (%.2f reais)\n", encontra, despesas[encontra-1]);
+						printf("\ndespesa %dª: (%.2f $)\n", encontra, despesas[encontra-1]);
 
 						while (1) {
 							printf("Gostaria de encerrar esta hospedagem? (s/n): " );
 							scanf(" %c", &resp2);
-							// Confirma o encerramento.
+							// Confirma o delete.
 							if (resp2 == 'S' || resp2 == 's') {
+								//codiçao se o valor escolhido esta no meio do vetor
 								if (encontra < quantidade) {
 									int dif;
 									dif = quantidade - encontra;
+									//vetor temporario para guarda os valores
 									int vetortemp[quantidade - encontra];
+									//Guarda o restante dos valores no vetor temporario
 									for (i = 0 ; i < dif; i++) {
 										vetortemp[i] = despesas[i+encontra];
 									}
+									//Retira exclui o valor escolhido e adiciona os restantes para completar o vetor novamente
 									for (i = encontra-1; i < quantidade-1; i++) {
 										despesas[i] = vetortemp[i-encontra+1];
 									}
+									//exclui o valor da ultima posiçao e diminui a quantidade de posiçoes
 									despesas[quantidade-1] = 0;
 									quantidade -= 1;
 									printf("Despesa excluida com sucesso!\n");
 								}
+								//se valor escolhido concide com o ultima despesa 
 								else {
+									//exclui o valor da ultima posiçao e diminui a quantidade de posiçoes
 									despesas[quantidade-1] = 0;
 									quantidade -= 1;
 									printf("Despesa excluida com sucesso!\n");
