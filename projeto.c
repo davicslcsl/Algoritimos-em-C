@@ -365,171 +365,129 @@ if (opcao == 1) {
                 printf("Opção inválida.\n");
             }
         }
-       //Encerrar hospedagem(deletar)
-        if (opcao == 4) {
-            int sub;
-            printf("\n=== Encerrar hospedagem ===\n");
-            printf("1 - Encerrar uma hospedagem\n");
-            printf("2 - Encerrar todas as hospedagens\n");
-            printf("Escolha: ");
-            if (scanf("%d", &sub) != 1) {
-                lixo = 'a';
-                while (lixo != '\n') {
-                    scanf("%c", &lixo);
-                }
-                sub = 0;
-            }
-            printf("\n");
-            //Encerrar uma hospedagem
-            if (sub == 1) {
-                //resp2 será usada para confirmar especificamente o encerramento do quarto escolhido.
-                char resp2 = 's';
-                //Primeiro verifica se existe algum quarto ocupado.
-                resp = 'N';
-                for (i = 0; i < 10; i++) {
-                    if (quartos[i] != 0) {
-                        resp = 's';
-                        // Encerra antecipadamente a procura.
-                        i = 10;
-                    }
-                }
-                if (resp == 'N') {
-                    printf(
-                        "Todos os quartos estão desocupados\n"
-                    );
-                }
-                while (resp == 's' || resp == 'S') {
-                    temp = 0;
-                    printf("Qual quarto deseja encerrar a hospedagem, (1 a 10): ");
-                    if (scanf("%d", &encontra) != 1) {
-                        lixo = 'a';
-                        while (lixo != '\n') {
-                            scanf("%c", &lixo);
-                        }
-                        encontra = 0;
-                    }
-                    //Procura o quarto informado.
-                    for (i = 0; i < 10; i++) {
-                        if (i == encontra - 1) {
-                            //Existe uma hospedagem nesse quarto.
-                            if (quartos[i] > 0) {
-                                printf(
-                                    "O quarto %d está reservado com %d diárias \n", encontra, quartos[i]);
-                                printf("Gostaria de encerrar esta hospedagem? (s/n): " );
-                                scanf(" %c", &resp2);
-                                // Confirma o encerramento.
-                                if (
-                                    resp2 == 'S' ||
-                                    resp2 == 's'
-                                ) {
-                                 	//Colocar 0 significa liberar o quarto.
-                                    quartos[i] = 0;
-                                    printf("Foi encerrada a hospedagem do quarto %d \n",encontra);
-                                    temp += 1;
-                                }
-                                //Usuário cancelou a operação.
-                                else if (
-                                    resp2 == 'N' ||
-                                    resp2 == 'n'
-                                ) {
-                                    printf("Foi cancelado o encerramento da hospedagem\n");
-                                    temp += 1;
-                                }
-                                else {
-                                    printf(
-                                        "Digitação inválida...\n\n"
-                                    );
-                                    temp += 1;
-                                }
-                            }
-                            // O quarto existe, porém está vazio.
-                            else {
-                                printf("O quarto está desocupado.\n");
-                                temp += 1;
-                            }
-                        }
-                    }
-                    //Nenhum índice correspondente foi encontrado.
-                    if (temp == 0) {
-                        printf("quarto inexistente, há apenas 10 quartos.\n");
-                    }
-                    printf(
-                        "\ndeseja apagar outra hospedagem? (s/n): "
-                    );
-                    scanf(" %c", &resp);
-                    if (resp == 's' || resp == 'S') {
-                        printf("\n");
-                    }
-                    else if (
-                        resp == 'n' ||
-                        resp == 'N'
-                    ) {
-                        printf("\n");
-                    }
-                    else {
-                        //Mantém o laço e permite digitar novamente.
-                        resp = 's';
-                        printf(
-                            "digitação inválida, escreva novamente\n\n"
-                        );
-                    }
-                }
-            }
-            //Encerrar todas as hospedagens 
-            else if (sub == 2) {
-                int ocupados = 0;
-                //Conta quantos quartos estão ocupados.
-                for (i = 0; i < 10; i++) {
-                    if (quartos[i] > 0) {
-                        ocupados += 1;
-                    }
-                }
-                //Se nenhum quarto estiver ocupado, não há nada para encerrar.
-                if (ocupados == 0) {
-                    printf(
-                        "Todos os quartos estão desocupados\n"
-                    );
-                }
-                else {
-                    printf(
-                        "Existem %d quarto(s) ocupado(s).\n",
-                        ocupados
-                    );
-                    printf(
-                        "Deseja realmente encerrar TODAS as hospedagens? (s/n): "
-                    );
-                    scanf(" %c", &resp);
-                    // Usuário confirma.
-                    if (resp == 's' || resp == 'S') {
-                        //Zera todo o vetor.
-                        //Como 0 significa vazio, isso encerra todas as hospedagens.
-                        for (i = 0; i < 10; i++) {
-                            quartos[i] = 0;
-                        }
-                        printf(
-                            "Todas as hospedagens foram encerradas.\n"
-                        );
-                    }
-                    //Usuário cancela.
-                    else if (
-                        resp == 'n' ||
-                        resp == 'N'
-                    ) {
-                        printf(
-                            "Operação cancelada.\n"
-                        );
-                    }
-                    else {
-                        printf(
-                            "Digitação inválida. Operação cancelada.\n"
-                        );
-                    }
-                }
-            }
-            else {
-                printf("Opção inválida.\n");
-            }
-        }
+       //Encerrar despesa(deletar)
+		if (opcao == 4) {
+			resp = 'S';
+			if (quantidade = 0) {
+				printf("Nao ha despesas registradas.\n");
+				resp = 'N';
+			}
+			while (resp == 's' || resp == 'S') {
+				int sub;
+				printf("\n=== Deletar despesas ===\n");
+				printf("1 - Deletar uma despesa\n");
+				printf("2 - Deletar todas as despesas\n");
+				printf("Escolha: ");
+				if (scanf("%d", &sub) != 1) {
+					lixo = 'a';
+					while (lixo != '\n') {
+						scanf("%c", &lixo);
+					}
+					sub = 0;
+				}
+				printf("\n");
+				//Encerrar uma despesa
+				if (sub == 1) {
+					//resp2 será usada para confirmar especificamente o encerramento do quarto escolhido.
+					char resp2 = 'S';
+					for (i = 0; i < quantidade; i++) {
+						printf("despesa %dª: (%.2f $)\n", i + 1, despesas[i]);
+					}
+					printf("Qual despesa deseja deletar:");
+					if (scanf("%d", &encontra) != 1) {
+						lixo = 'a';
+						while (lixo != '\n') {
+							scanf("%c", &lixo);
+						}
+						encontra = 0;
+					}
+					if (encontra > 0 && encontra =< quantidade) {
+						printf("\ndespesa %dª: (%.2f reais)\n", encontra, despesas[encontra-1]);
+
+						while (1) {
+							printf("Gostaria de encerrar esta hospedagem? (s/n): " );
+							scanf(" %c", &resp2);
+							// Confirma o encerramento.
+							if (resp2 == 'S' || resp2 == 's') {
+								if (encontra < quantidade) {
+									int dif;
+									dif = quantidade - encontra;
+									int vetortemp[quantidade - encontra];
+									for (i = 0 ; i < dif; i++) {
+										vetortemp[i] = despesas[i+encontra];
+									}
+									for (i = encontra-1; i < quantidade-1; i++) {
+										despesas[i] = vetortemp[i-encontra+1];
+									}
+									despesas[quantidade-1] = 0;
+									quantidade -= 1;
+									printf("Despesa excluida com sucesso!\n");
+								}
+								else {
+									despesas[quantidade-1] = 0;
+									quantidade -= 1;
+									printf("Despesa excluida com sucesso!\n");
+								}
+								break;
+							}
+							else if ( resp2 == 'N' || resp2 == 'n') {
+								printf("Foi cancelado o deletamento da despesa\n");
+								break;
+							}
+							else {
+								printf("Digitação inválida, digite novamente...\n\n");
+							}
+						}
+					}
+					else () {
+						printf("Despesa nao encotrada, so existe %i despesas", quantidade);
+					}
+				}
+				
+				
+				//Encerrar todas as hospedagens
+				else if (sub == 2) {
+					char resp2 = 'S';
+					printf("Deseja realmente encerrar TODAS as hospedagens? (s/n): ");
+					scanf(" %c", &resp2);
+					while(1) {
+						// Usuário confirma
+						if (resp2 == 's' || resp2 == 'S') {
+							for (i = 0; i < quantidade; i++) {
+								despesas[i] = 0;
+							}
+							quantidade = 0;
+							printf("Todas as hospedagens foram encerradas.\n");
+							break;
+						}
+						//Usuário cancela.
+						else if (resp == 'n' || resp == 'N') {
+							printf("Operação cancelada.\n");
+							break;
+						}
+						else {
+							printf("Digitação inválida, digite novamente...\n");
+						}
+					}
+				}
+				while (quantidade > 0) {
+					printf("\ndeseja apagar outra hospedagem? (s/n): ");
+					scanf(" %c", &resp);
+					if (resp == 's' || resp == 'S') {
+						printf("\n");
+						break;
+					}
+					else if (resp == 'n' || resp == 'N') {
+						printf("\n");
+						break;
+					}
+					else {
+						//Mantém o laço e permite digitar novamente.
+						printf("digitação inválida, escreva novamente\n\n");
+					}
+				}
+			}
+		}
     }
    	//Sair(encerrar o programa)
     //Quando opcao recebe 5, a condição do while deixa de ser verdadeira e o programa chega até aqui.
