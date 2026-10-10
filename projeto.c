@@ -441,15 +441,18 @@ if (opcao == 1) {
 								}
 								break;
 							}
+							//cacela o delete
 							else if ( resp2 == 'N' || resp2 == 'n') {
 								printf("Foi cancelado o deletamento da despesa\n");
 								break;
 							}
+							//laço de repetiçao para a "resp2"
 							else {
 								printf("Digitação inválida, digite novamente...\n\n");
 							}
 						}
 					}
+					//Se nao "encotra" for diferete de positivo ou maior que o numero de despesas
 					else () {
 						printf("Despesa nao encotrada, so existe %i despesas", quantidade);
 					}
@@ -476,18 +479,22 @@ if (opcao == 1) {
 							printf("Operação cancelada.\n");
 							break;
 						}
+						//Laço de repetiçao para resp
 						else {
 							printf("Digitação inválida, digite novamente...\n");
 						}
 					}
 				}
+			    //Laco de repetiçao que testa se a quantidade é maior que 0 e volta para o menu do deletar
 				while (quantidade > 0) {
 					printf("\ndeseja apagar outra hospedagem? (s/n): ");
 					scanf(" %c", &resp);
+					//volta para o menu do delete
 					if (resp == 's' || resp == 'S') {
 						printf("\n");
 						break;
 					}
+					//Sai do deletar
 					else if (resp == 'n' || resp == 'N') {
 						printf("\n");
 						break;
