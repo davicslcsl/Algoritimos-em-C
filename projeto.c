@@ -462,7 +462,7 @@ if (opcao == 1) {
 				//Encerrar todas as hospedagens
 				else if (sub == 2) {
 					char resp2 = 'S';
-					printf("Deseja realmente encerrar TODAS as hospedagens? (s/n): ");
+					printf("Deseja realmente deletar TODAS as despesas? (s/n): ");
 					scanf(" %c", &resp2);
 					while(1) {
 						// Usuário confirma
@@ -471,7 +471,7 @@ if (opcao == 1) {
 								despesas[i] = 0;
 							}
 							quantidade = 0;
-							printf("Todas as hospedagens foram encerradas.\n");
+							printf("Todas as despesas foram deletadas.\n");
 							break;
 						}
 						//Usuário cancela.
@@ -487,7 +487,7 @@ if (opcao == 1) {
 				}
 			    //Laco de repetiçao que testa se a quantidade é maior que 0 e volta para o menu do deletar
 				while (quantidade > 0) {
-					printf("\ndeseja apagar outra hospedagem? (s/n): ");
+					printf("\ndeseja deletar outra despesa? (s/n): ");
 					scanf(" %c", &resp);
 					//volta para o menu do delete
 					if (resp == 's' || resp == 'S') {
