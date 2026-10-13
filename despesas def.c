@@ -353,7 +353,6 @@ int main() {
 	}
 
 	   	//Sair(encerrar o programa)
-    //Quando opcao recebe 5, a condição do while deixa de ser verdadeira e o programa chega até aqui.
 	if (opcao == 5) {
 		printf("\nAté mais...");
 	}
