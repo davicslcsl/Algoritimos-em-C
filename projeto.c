@@ -15,7 +15,7 @@ int main() {
         //que ficaram no buffer de entrada após um scanf falhar.
 		char lixo;
 		//Menu
-		printf("\n======== Hotel ========\n");
+		printf("\n======== Despesas ========\n");
 		printf("1 - Registrar despesas\n");
 		printf("2 - Consultar despesas\n");
 		printf("3 - Alterar despesas\n");
