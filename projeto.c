@@ -15,7 +15,6 @@ int main() {
   //Garante que o programa continue a ser executado até que o usuário digite 5
 	while (opcao != 5) {
 		char resp = 's';
-		char lixo;
 
     //Menu
 		printf("\n======== Despesas ========\n");
@@ -27,11 +26,6 @@ int main() {
 		printf("Digite o número para realizar a ação: ");
 
 		leu = scanf("%d", &opcao);
-		// descarta o que sobrou no teclado até o Enter
-		lixo = 'a';
-		while (lixo != '\n') {
-			scanf("%c", &lixo);
-		}
 
 		if (leu != 1 || opcao < 1 || opcao > 5) {
 			printf("\nDigite uma opção válida (1 a 5)!\n");
@@ -50,10 +44,6 @@ int main() {
 			while (resp == 's' || resp == 'S') {
 				printf("\nDigite o valor da despesa %d: ", quantidade + 1);
 				leu = scanf("%f", &numero);
-				lixo = 'a';
-				while (lixo != '\n') {
-					scanf("%c", &lixo);
-				}
 
 				if (leu == 1) {
 					// zero é um valor válido, só não aceita negativo
@@ -77,10 +67,6 @@ int main() {
 				else {
 					printf("Deseja registrar outra despesa? (s/n): ");
 					scanf(" %c", &resp);
-					lixo = 'a';
-					while (lixo != '\n') {
-						scanf("%c", &lixo);
-					}
 
 					if (resp == 's' || resp == 'S') {
 						printf("\n");
@@ -110,10 +96,7 @@ int main() {
 				printf("3 - Exibir maior e menor despesa\n");
 				printf("Escolha: ");
 				leu = scanf("%d", &op);
-				lixo = 'a';
-				while (lixo != '\n') {
-					scanf("%c", &lixo);
-				}
+				
 				if (leu != 1) {
 					op = 0;
 				}
@@ -176,10 +159,8 @@ int main() {
 
 				printf("\nQual despesa deseja alterar (1 a %d): ", quantidade);
 				leu = scanf("%d", &encontra);
-				lixo = 'a';
-				while (lixo != '\n') {
-					scanf("%c", &lixo);
-				}
+
+				
 				if (leu != 1) {
 					encontra = 0;
 				}
@@ -188,10 +169,6 @@ int main() {
 					printf("A despesa %d vale R$ %.2f.\n", encontra, despesas[encontra - 1]);
 					printf("Digite o novo valor: ");
 					leu = scanf("%f", &numero);
-					lixo = 'a';
-					while (lixo != '\n') {
-						scanf("%c", &lixo);
-					}
 
 					if (leu == 1) {
 						if (numero >= 0) {
@@ -215,10 +192,7 @@ int main() {
 				while (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {
 					printf("\nDeseja alterar outra despesa? (s/n): ");
 					scanf(" %c", &resp);
-					lixo = 'a';
-					while (lixo != '\n') {
-						scanf("%c", &lixo);
-					}
+		
 					if (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {
 						printf("Digitação inválida, escreva novamente.\n");
 					}
@@ -244,10 +218,7 @@ int main() {
 				printf("2 - Deletar todas as despesas\n");
 				printf("Escolha: ");
 				leu = scanf("%d", &sub);
-				lixo = 'a';
-				while (lixo != '\n') {
-					scanf("%c", &lixo);
-				}
+
 				if (leu != 1) {
 					sub = 0;
 				}
@@ -260,10 +231,7 @@ int main() {
 
 					printf("\nQual despesa deseja deletar (1 a %d): ", quantidade);
 					leu = scanf("%d", &encontra);
-					lixo = 'a';
-					while (lixo != '\n') {
-						scanf("%c", &lixo);
-					}
+
 					if (leu != 1) {
 						encontra = 0;
 					}
@@ -274,10 +242,6 @@ int main() {
 						while (resp2 != 's' && resp2 != 'S' && resp2 != 'n' && resp2 != 'N') {
 							printf("Deseja deletar esta despesa? (s/n): ");
 							scanf(" %c", &resp2);
-							lixo = 'a';
-							while (lixo != '\n') {
-								scanf("%c", &lixo);
-							}
 
 							if (resp2 == 's' || resp2 == 'S') {
 								// puxa as despesas seguintes para trás, mantendo o vetor em ordem
@@ -305,10 +269,6 @@ int main() {
 					while (resp2 != 's' && resp2 != 'S' && resp2 != 'n' && resp2 != 'N') {
 						printf("Deseja realmente deletar TODAS as despesas? (s/n): ");
 						scanf(" %c", &resp2);
-						lixo = 'a';
-						while (lixo != '\n') {
-							scanf("%c", &lixo);
-						}
 
 						if (resp2 == 's' || resp2 == 'S') {
 							for (i = 0; i < quantidade; i++) {
@@ -338,10 +298,7 @@ int main() {
 					while (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {
 						printf("\nDeseja deletar outra despesa? (s/n): ");
 						scanf(" %c", &resp);
-						lixo = 'a';
-						while (lixo != '\n') {
-							scanf("%c", &lixo);
-						}
+
 						if (resp != 's' && resp != 'S' && resp != 'n' && resp != 'N') {
 							printf("Digitação inválida, escreva novamente.\n");
 						}
